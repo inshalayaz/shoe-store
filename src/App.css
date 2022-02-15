@@ -1,8 +1,8 @@
 .top-section{
-    background: url('../assets/hero\ background.jpg') no-repeat;
+    background: url('./images/hero-bg.jpg') no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 103vh;
     width: 100%;
     color: #fff;
-    /* padding-bottom: 100px; */
+    padding-bottom: 100px;
 }

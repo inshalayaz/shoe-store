@@ -8,7 +8,7 @@ const Hero = () => {
         item
         xs={12}
         sm={12}
-        style={{ color: '#fff', margin: '180px 0px 50px 50px' }}
+        style={{ color: '#fff', margin: '180px 0px 50px 70px' }}
       >
         <Typography variant="h3" align="left">
           AIR JORDAN 5 RETRO <br /> 'RACER BLUE'
