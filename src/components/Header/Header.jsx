@@ -1,10 +1,4 @@
-import {
-  Grid,
-  InputAdornment,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Grid, InputAdornment, Link, Stack, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
 import { SearchBar } from './styles';
@@ -49,18 +43,26 @@ const Header = () => {
       </Grid>
       <Grid item md={4} display="flex" justifyContent="center">
         <Stack direction="row" spacing={2}>
-          <Typography variant="body1" className="nav-items">
-            Sneakers
-          </Typography>
-          <Typography variant="body1" className="nav-items">
-            FC Apparel
-          </Typography>
-          <Typography variant="body1" className="nav-items">
-            FC Apparel
-          </Typography>
-          <Typography variant="body1" className="nav-items">
-            FC Apparel
-          </Typography>
+          <Link href="#">
+            <Typography variant="body1" className="nav-items">
+              Sneakers
+            </Typography>
+          </Link>
+          <Link href="#">
+            <Typography variant="body1" className="nav-items">
+              FC Apparel
+            </Typography>
+          </Link>
+          <Link href="#">
+            <Typography variant="body1" className="nav-items">
+              Store
+            </Typography>
+          </Link>
+          <Link href="#">
+            <Typography variant="body1" className="nav-items">
+              Account
+            </Typography>
+          </Link>
         </Stack>
       </Grid>
     </Grid>
