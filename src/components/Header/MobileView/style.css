@@ -1,0 +1,16 @@
+.mobile-menu-container{
+    z-index: 999;
+    background-color: #fff;
+    height: 100vh;
+    opacity: 0.3;
+    display: flex;
+    /* flex-direction: column!important; */
+    align-items: baseline;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+.close-btn{
+    display: flex;
+    justify-content: end;
+}
+
