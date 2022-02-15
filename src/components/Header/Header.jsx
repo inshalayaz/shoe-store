@@ -63,7 +63,12 @@ const Header = () => {
             variant="outlined"
             size="small"
           /> */}
-          <input type="search" name="" placeholder="Search" class="searchbar" />
+          <input
+            type="search"
+            name=""
+            placeholder="Search"
+            class={navbar ? 'active-searchbar searchbar' : 'searchbar'}
+          />
         </Grid>
         <Grid item md={5} display="flex" justifyContent="center">
           <Typography variant="h2">Shoe Store</Typography>

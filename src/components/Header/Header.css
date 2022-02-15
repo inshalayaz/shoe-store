@@ -14,6 +14,12 @@
 .searchbar::placeholder{
     color: #fff;
 }
+.active-searchbar{
+    color: #000;
+}
+.active-searchbar::placeholder{
+    color: #000;
+}
 .active{
     background-color: #fff!important;
     color: #000!important;
