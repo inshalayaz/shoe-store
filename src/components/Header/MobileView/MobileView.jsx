@@ -1,4 +1,4 @@
-import { Grid, Typography, Paper } from '@mui/material';
+import { Grid, Typography, Link } from '@mui/material';
 import Searchbar from '../Searchbar/Searchbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -34,16 +34,20 @@ const MobileView = () => {
         <Grid container className="mobile-menu-container">
           <Grid xs={12} item className="close-btn">
             <CloseIcon
-              color="primary"
+              color="white"
               onClick={handleClick}
               style={{ cursor: 'pointer' }}
             />
-            <Grid item xs={12}>
-              <Typography variant="h5">Hello</Typography>
+            <Grid container spacing={2} className="menu-items">
+              {menuItems.map((i) => (
+                <Grid item xs={12}>
+                  <Link href="#" color="#fff" underline="none">
+                    <Typography variant="h5">{i}</Typography>
+                  </Link>
+                </Grid>
+              ))}
             </Grid>
           </Grid>
-          {/* <Grid container className="menu-items">
-          </Grid> */}
         </Grid>
       )}
     </Grid>
