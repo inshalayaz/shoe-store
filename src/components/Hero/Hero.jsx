@@ -1,4 +1,5 @@
 import { Grid, Link, Typography } from '@mui/material';
+import { Link as LinkR } from 'react-router-dom';
 import React from 'react';
 import './Hero.css';
 const Hero = () => {
@@ -21,7 +22,9 @@ const Hero = () => {
           }}
         >
           <Typography variant="subtitle1" marginTop="30px">
-            Shop Now
+            <LinkR to="/products/1" style={{ color: '#fff' }}>
+              Shop Now
+            </LinkR>
           </Typography>
         </Link>
       </Grid>

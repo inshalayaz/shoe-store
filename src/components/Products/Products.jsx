@@ -1,8 +1,9 @@
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography, Link as LinkM } from '@mui/material';
 import React from 'react';
 import ProductCard from './ProductCards/ProductCards';
 import './products.css';
 import data from './data';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   return (
@@ -11,9 +12,14 @@ const Products = () => {
         <Typography variant="h5">NEW RELEASES</Typography>
         <div className="cards">
           <Grid container spacing={2}>
-            {data.map(({ img, title, brand }) => (
+            {data.map(({ img, title, brand, slug }) => (
               <Grid item xs={6} md={3} key={title}>
-                <ProductCard img={img} brand={brand} title={title} />
+                <Link
+                  to={`/products/${slug}`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <ProductCard img={img} brand={brand} title={title} />
+                </Link>
               </Grid>
             ))}
           </Grid>

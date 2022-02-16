@@ -1,8 +1,9 @@
-import { Grid, InputAdornment, Link, Stack, Typography } from '@mui/material';
+import { Grid, Link, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AppContext } from '../../../context/AppContext';
 import Searchbar from '../Searchbar/Searchbar';
+import { Link as LinkR } from 'react-router-dom';
 import './style.css';
 const DesktopView = () => {
   const { navbar } = useContext(AppContext);
@@ -22,7 +23,11 @@ const DesktopView = () => {
         <Searchbar />
       </Grid>
       <Grid item md={5} display="flex" justifyContent="center">
-        <Typography variant="h2">Shoe Store</Typography>
+        <Typography variant="h2">
+          <LinkR to="/" style={{ textDecoration: 'none', color: '#fff' }}>
+            Shoe Store
+          </LinkR>
+        </Typography>
       </Grid>
       <Grid item md={4} display="flex" justifyContent="center">
         <Stack direction="row" spacing={2}>

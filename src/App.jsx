@@ -38,8 +38,8 @@ const App = () => {
           <BrowserRouter>
             <Header />
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<SingleProduct />} />
+              <Route exact path="/" element={<Home />} />
+              <Route path="/products/:personId" element={<SingleProduct />} />
             </Routes>
           </BrowserRouter>
         </Container>
