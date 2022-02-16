@@ -5,6 +5,7 @@ export const AppContextProvider = ({ children }) => {
   const [navbar, setNavbar] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
   const [mobileView, setMobileView] = useState(false);
+  // const [browserLocation, setBrowserLocation] = useState(location);
 
   return (
     <AppContext.Provider

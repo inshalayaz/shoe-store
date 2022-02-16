@@ -1,14 +1,13 @@
 import { Container, CssBaseline, Grid } from '@mui/material';
-import Header from './components/Header/Header';
 import './App.css';
-import Hero from './components/Hero/Hero';
-import Products from './components/Products/Products';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useContext } from 'react';
-import { AppContext } from './context/AppContext';
+
+import Home from './pages/Home';
+import Header from './components/Header/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SingleProduct from './pages/SingleProduct/SingleProduct';
 const App = () => {
-  const { darkMode } = useContext(AppContext);
   const theme = createTheme({
     typography: {
       h1: {
@@ -30,20 +29,19 @@ const App = () => {
       },
     },
   });
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Container maxWidth="false" disableGutters>
-          <Grid container spacing={2}>
-            <Grid item xs={12} className="top-section">
-              <Header />
-              <Hero />
-            </Grid>
-            <Grid item xs={12} className="bottom-section">
-              <Products />
-            </Grid>
-          </Grid>
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<SingleProduct />} />
+            </Routes>
+          </BrowserRouter>
         </Container>
       </ThemeProvider>
     </div>

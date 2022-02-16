@@ -1,13 +1,15 @@
 import { AppBar } from '@mui/material';
 import './header.css';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../context/AppContext';
 import DesktopView from './DesktopView/DesktopView';
 import MobileView from './MobileView/MobileView';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
   const { navbar, setNavbar, mobileView, setMobileView } =
     useContext(AppContext);
+  const { headerClass, setHeaderClass } = useState('navbar');
 
   const changeBackground = () => {
     if (window.scrollY >= 600) {
@@ -18,7 +20,18 @@ const Header = () => {
       // setDarkMode(true);
     }
   };
+  const selectClass = () => {
+    const location = useLocation();
+    console.log(location.pathname);
+    if (location.pathname !== '/' || navbar === true) {
+      return 'navbar active';
+    } else {
+      return 'navbar';
+    }
+  };
+  const selectedClass = selectClass();
 
+  console.log(selectedClass);
   useEffect(() => {
     window.addEventListener('scroll', changeBackground);
 
@@ -38,7 +51,7 @@ const Header = () => {
   }, []);
 
   return (
-    <AppBar position="fixed" className={navbar ? 'navbar active' : 'navbar '}>
+    <AppBar position="fixed" className={selectedClass}>
       {mobileView ? <MobileView /> : <DesktopView />}
     </AppBar>
   );

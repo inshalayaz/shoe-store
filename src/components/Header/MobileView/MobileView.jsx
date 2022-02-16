@@ -40,7 +40,7 @@ const MobileView = () => {
             />
             <Grid container spacing={2} className="menu-items">
               {menuItems.map((i) => (
-                <Grid item xs={12}>
+                <Grid item xs={12} key={i}>
                   <Link href="#" color="#fff" underline="none">
                     <Typography variant="h5">{i}</Typography>
                   </Link>
