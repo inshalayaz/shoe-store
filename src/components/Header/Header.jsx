@@ -9,7 +9,6 @@ import { useLocation } from 'react-router-dom';
 const Header = () => {
   const { navbar, setNavbar, mobileView, setMobileView } =
     useContext(AppContext);
-  const { headerClass, setHeaderClass } = useState('navbar');
 
   const changeBackground = () => {
     if (window.scrollY >= 600) {
@@ -31,7 +30,6 @@ const Header = () => {
   };
   const selectedClass = selectClass();
 
-  console.log(selectedClass);
   useEffect(() => {
     window.addEventListener('scroll', changeBackground);
 
