@@ -16,19 +16,11 @@ const Hero = () => {
           AIR JORDAN 5 RETRO <br /> 'RACER BLUE'
         </Typography>
 
-        <Link
-          href="#"
-          style={{
-            color: '#fff',
-            textDecorationColor: '#fff',
-          }}
-        >
+        <LinkR to="/products/1" style={{ color: '#fff' }}>
           <Typography variant="subtitle1" marginTop="30px">
-            <LinkR to="/products/1" style={{ color: '#fff' }}>
-              Shop Now
-            </LinkR>
+            Shop Now
           </Typography>
-        </Link>
+        </LinkR>
       </Grid>
     </Grid>
   );

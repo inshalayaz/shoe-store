@@ -1,6 +1,5 @@
 import { Button, Grid, Typography } from '@mui/material';
 import './style.css';
-import img from '../../images/1.jpg';
 import afterpay from '../../images/afterpay.svg';
 
 import data from '../../components/Products/data';
@@ -28,10 +27,10 @@ const SingleProduct = () => {
           <Typography variant="body1">Back to Home</Typography>
         </Link>
       </Grid>
-      <Grid item xs={6} className="product_details">
+      <Grid item md={6} xs={12} className="product_details">
         <img src={product.img} alt="no" width="100%" />
       </Grid>
-      <Grid item xs={6} className="product_details" style={{}}>
+      <Grid item md={6} xs={12} className="product_details" style={{}}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="caption">{product.brand}</Typography>
@@ -42,7 +41,7 @@ const SingleProduct = () => {
           <Grid item xs={12}>
             <Typography variant="subtitle2">SELECT US MENU</Typography>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={12} md={8}>
             {sizes.map((i, index) => (
               <Button
                 variant="outlined"

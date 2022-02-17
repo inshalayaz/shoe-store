@@ -6,3 +6,9 @@
     color: #fff;
     padding-bottom: 100px;
 }
+
+@media only screen and (max-width: 600px){
+    .top-section{
+        height: 72vh;
+    }
+}
