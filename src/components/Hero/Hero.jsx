@@ -10,10 +10,12 @@ const Hero = () => {
         xs={12}
         sm={12}
         style={{ color: '#fff', margin: '280px 0px 50px 70px' }}
+        className="hero_content"
       >
-        <Typography variant="h3" align="left">
+        <Typography variant="h3" align="left" className="hero_product_name">
           AIR JORDAN 5 RETRO <br /> 'RACER BLUE'
         </Typography>
+
         <Link
           href="#"
           style={{

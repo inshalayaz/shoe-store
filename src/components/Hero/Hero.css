@@ -1,3 +1,8 @@
 .hero{
     overflow-y: hidden;
 }
+@media only screen and (max-width: 600px) {
+    .hero_product_name{
+        font-size: 30px!important;
+    }
+}
