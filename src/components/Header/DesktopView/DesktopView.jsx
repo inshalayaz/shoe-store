@@ -23,9 +23,11 @@ const DesktopView = () => {
         <Searchbar />
       </Grid>
       <Grid item md={5} display="flex" justifyContent="center">
-        <LinkR to="/" style={{ textDecoration: 'none', color: '#fff' }}>
-          <Typography variant="h2">Shoe Store</Typography>
-        </LinkR>
+        <Typography variant="h2">
+          <LinkR to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            Shoe Store
+          </LinkR>
+        </Typography>
       </Grid>
       <Grid item md={4} display="flex" justifyContent="center">
         <Stack direction="row" spacing={2}>

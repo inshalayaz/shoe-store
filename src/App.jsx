@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Header from './components/Header/Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
+import Footer from './components/Footer/Footer';
 const App = () => {
   const theme = createTheme({
     typography: {
@@ -42,6 +43,7 @@ const App = () => {
               <Route path="/products/:personId" element={<SingleProduct />} />
             </Routes>
           </BrowserRouter>
+          {/* <Footer /> */}
         </Container>
       </ThemeProvider>
     </div>
