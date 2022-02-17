@@ -8,6 +8,8 @@ import Header from './components/Header/Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
 import Footer from './components/Footer/Footer';
+import { Suspense } from 'react';
+import Loading from './components/Loading/Loading';
 const App = () => {
   const theme = createTheme({
     typography: {
@@ -37,12 +39,14 @@ const App = () => {
         <CssBaseline />
         <Container maxWidth="false" disableGutters>
           <BrowserRouter>
-            <Header />
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route path="/products/:personId" element={<SingleProduct />} />
-            </Routes>
-            <Footer />
+            <Suspense fallback={<Loading />}>
+              <Header />
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/products/:personId" element={<SingleProduct />} />
+              </Routes>
+              <Footer />
+            </Suspense>
           </BrowserRouter>
         </Container>
       </ThemeProvider>
