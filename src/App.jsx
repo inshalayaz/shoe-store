@@ -42,8 +42,8 @@ const App = () => {
               <Route exact path="/" element={<Home />} />
               <Route path="/products/:personId" element={<SingleProduct />} />
             </Routes>
+            <Footer />
           </BrowserRouter>
-          {/* <Footer /> */}
         </Container>
       </ThemeProvider>
     </div>
