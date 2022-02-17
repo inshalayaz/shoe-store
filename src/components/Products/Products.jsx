@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Products = () => {
   return (
     <Grid container spacing={2} className="products">
-      <Grid item xs={12} style={{ margin: '0 70px' }}>
+      <Grid item xs={12} className="products_content">
         <Typography variant="h5">NEW RELEASES</Typography>
         <div className="cards">
           <Grid container spacing={2}>

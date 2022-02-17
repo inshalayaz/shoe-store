@@ -5,11 +5,11 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import './style.css';
 
 const ProductCard = ({ img, brand, title }) => {
   return (
-    <Card sx={{ maxWidth: 345, minHeight: 345 }}>
+    <Card className="card_container">
       <CardActionArea>
         <CardMedia component="img" src={img} alt={title} />
         <CardContent>
