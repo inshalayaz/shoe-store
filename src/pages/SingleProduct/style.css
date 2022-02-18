@@ -1,6 +1,7 @@
 .single_product{
     margin-top: 150px!important;
     padding: 10px;
+    margin-bottom: 120px;
 }
 .product_details{
     justify-content: flex-start;
