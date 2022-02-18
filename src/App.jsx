@@ -1,4 +1,4 @@
-import { Container, CssBaseline, Grid } from '@mui/material';
+import { Container, CssBaseline } from '@mui/material';
 import './App.css';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -8,9 +8,11 @@ import Header from './components/Header/Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
 import Footer from './components/Footer/Footer';
-import { Suspense } from 'react';
+import { Suspense, useContext } from 'react';
 import Loading from './components/Loading/Loading';
+import { AppContext } from './context/AppContext';
 const App = () => {
+  const { darkMode } = useContext(AppContext);
   const theme = createTheme({
     typography: {
       h1: {
@@ -25,10 +27,13 @@ const App = () => {
       },
     },
     palette: {
-      mode: 'light',
+      mode: darkMode ? 'dark' : 'light',
       primary: {
         main: '#000',
         secondary: '#208080',
+      },
+      secondary: {
+        main: '#f9D71C',
       },
     },
   });
