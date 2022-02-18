@@ -21,7 +21,6 @@ const Header = () => {
   };
   const selectClass = () => {
     const location = useLocation();
-    console.log(location.pathname);
     if (location.pathname !== '/' || navbar === true) {
       return 'navbar active';
     } else {

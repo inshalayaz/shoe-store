@@ -8,7 +8,7 @@ const Searchbar = () => {
 
   const selectClass = () => {
     const location = useLocation();
-    // console.log(location.pathname);
+
     if (location.pathname !== '/' || navbar === true) {
       return 'active-searchbar searchbar';
     } else {
@@ -16,7 +16,7 @@ const Searchbar = () => {
     }
   };
   const selectedClass = selectClass();
-  console.log(selectClass());
+
   return (
     <input
       type="search"

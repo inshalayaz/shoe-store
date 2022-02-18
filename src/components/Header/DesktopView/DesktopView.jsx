@@ -1,12 +1,4 @@
-import {
-  Button,
-  FormControlLabel,
-  Grid,
-  Link,
-  Stack,
-  Switch,
-  Typography,
-} from '@mui/material';
+import { Grid, Link, Stack, Typography } from '@mui/material';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
 import { useContext } from 'react';
@@ -20,7 +12,6 @@ const DesktopView = () => {
   const { navbar, darkMode, setDarkMode } = useContext(AppContext);
   const selectClass = () => {
     const location = useLocation();
-    console.log(location.pathname);
     if (location.pathname !== '/' || navbar === true) {
       return 'active-navitem';
     } else {
