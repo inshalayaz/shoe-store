@@ -53,11 +53,11 @@ const DesktopView = () => {
               Store
             </Typography>
           </Link>
-          <Link href="#" underline="none">
+          <LinkR to="/contact" style={{ textDecoration: 'none' }}>
             <Typography variant="body1" className={selectedClass}>
-              Account
+              Contact
             </Typography>
-          </Link>
+          </LinkR>
           <Typography
             variant="body1"
             style={{ cursor: 'pointer' }}

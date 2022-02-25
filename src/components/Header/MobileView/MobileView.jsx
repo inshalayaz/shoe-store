@@ -11,7 +11,7 @@ const MobileView = () => {
     console.log('click');
     setOpenMenu(!openMenu);
   };
-  const menuItems = ['Shop', 'Ali Jordan', 'Nike', 'Account'];
+  const menuItems = ['Shop', 'Ali Jordan', 'Nike', 'Contact'];
 
   return (
     <Grid
