@@ -12,6 +12,7 @@ import { Suspense, useContext } from 'react';
 import Loading from './components/Loading/Loading';
 import { AppContext } from './context/AppContext';
 import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 const App = () => {
   const { darkMode } = useContext(AppContext);
   const theme = createTheme({
@@ -51,6 +52,7 @@ const App = () => {
                 <Route exact path="/" element={<Home />} />
                 <Route path="/products/:personId" element={<SingleProduct />} />
                 <Route exact path="/login" element={<Login />} />
+                <Route exact path="/register" element={<Register />} />
               </Routes>
               <Footer />
             </Suspense>
