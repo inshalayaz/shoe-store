@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 import { Suspense, useContext } from 'react';
 import Loading from './components/Loading/Loading';
 import { AppContext } from './context/AppContext';
+import Login from './pages/Login/Login';
 const App = () => {
   const { darkMode } = useContext(AppContext);
   const theme = createTheme({
@@ -49,6 +50,7 @@ const App = () => {
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/products/:personId" element={<SingleProduct />} />
+                <Route exact path="/login" element={<Login />} />
               </Routes>
               <Footer />
             </Suspense>

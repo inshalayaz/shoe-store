@@ -53,9 +53,9 @@ const DesktopView = () => {
               Store
             </Typography>
           </Link>
-          <LinkR to="/contact" style={{ textDecoration: 'none' }}>
+          <LinkR to="/login" style={{ textDecoration: 'none' }}>
             <Typography variant="body1" className={selectedClass}>
-              Contact
+              Login
             </Typography>
           </LinkR>
           <Typography
