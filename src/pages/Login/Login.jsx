@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -12,6 +11,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link as LinkR } from 'react-router-dom';
 import './style.css';
+import { login } from '../../context/authContext/apiCalls';
+import { AuthContext } from '../../context/authContext/AuthContext';
+import { useContext } from 'react';
 
 function Copyright(props) {
   return (
@@ -32,13 +34,14 @@ function Copyright(props) {
 }
 
 export default function Login() {
+  const { user, setUser } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    login(
+      { email: data.get('email'), password: data.get('password') },
+      setUser
+    );
   };
 
   return (

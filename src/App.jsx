@@ -13,6 +13,7 @@ import Loading from './components/Loading/Loading';
 import { AppContext } from './context/AppContext';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import { AuthContextPorvider } from './context/authContext/AuthContext';
 const App = () => {
   const { darkMode } = useContext(AppContext);
   const theme = createTheme({
@@ -51,6 +52,7 @@ const App = () => {
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/products/:personId" element={<SingleProduct />} />
+
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/register" element={<Register />} />
               </Routes>

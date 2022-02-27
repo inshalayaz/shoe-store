@@ -30,11 +30,10 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-
   const user = await User.findOne({ where: { email: email } });
 
   if (!user) {
-    res.status(400).json({ message: 'Incorrect Email' });
+    res.status(400).json({ message: 'Incorrect Email or Password' });
   } else {
     const bytes = CryptoJS.AES.decrypt(user.password, '1234');
     const originalText = bytes.toString(CryptoJS.enc.Utf8);
