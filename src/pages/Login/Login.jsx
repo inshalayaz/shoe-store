@@ -14,6 +14,7 @@ import './style.css';
 import { login } from '../../context/authContext/apiCalls';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -35,6 +36,7 @@ function Copyright(props) {
 
 export default function Login() {
   const { user, setUser } = useContext(AuthContext);
+  let navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -42,6 +44,10 @@ export default function Login() {
       { email: data.get('email'), password: data.get('password') },
       setUser
     );
+    if (user.email) {
+      console.log(user.email);
+      navigate('/dashboard');
+    }
   };
 
   return (

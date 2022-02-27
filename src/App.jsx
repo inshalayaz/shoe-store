@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import Home from './pages/Home';
 import Header from './components/Header/Header';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
 import Footer from './components/Footer/Footer';
 import { Suspense, useContext } from 'react';
@@ -13,7 +13,8 @@ import Loading from './components/Loading/Loading';
 import { AppContext } from './context/AppContext';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-import { AuthContextPorvider } from './context/authContext/AuthContext';
+import { AuthContext } from './context/authContext/AuthContext';
+import Dashboard from './pages/Dashboard/Dashboard';
 const App = () => {
   const { darkMode } = useContext(AppContext);
   const theme = createTheme({
@@ -41,6 +42,8 @@ const App = () => {
     },
   });
 
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -51,10 +54,20 @@ const App = () => {
               <Header />
               <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route path="/products/:personId" element={<SingleProduct />} />
+                <Route
+                  exact
+                  path="/products/:personId"
+                  element={<SingleProduct />}
+                />
 
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/register" element={<Register />} />
+                <Route
+                  path="/dashboard"
+                  element={
+                    user?.email ? <Dashboard /> : <Navigate to="/login" />
+                  }
+                />
               </Routes>
               <Footer />
             </Suspense>
