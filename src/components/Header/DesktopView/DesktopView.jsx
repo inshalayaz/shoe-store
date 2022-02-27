@@ -68,7 +68,10 @@ const DesktopView = () => {
               variant="outlined"
               color="primary"
               size="small"
-              onClick={() => setUser(null)}
+              onClick={() => {
+                setUser(null);
+                localStorage.clear();
+              }}
             >
               Logout
             </Button>

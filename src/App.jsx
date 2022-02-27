@@ -8,7 +8,7 @@ import Header from './components/Header/Header';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
 import Footer from './components/Footer/Footer';
-import { Suspense, useContext } from 'react';
+import { Suspense, useContext, useEffect } from 'react';
 import Loading from './components/Loading/Loading';
 import { AppContext } from './context/AppContext';
 import Login from './pages/Login/Login';
@@ -42,7 +42,13 @@ const App = () => {
     },
   });
 
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    let user = JSON.parse(localStorage.getItem('email'));
+    setUser(user);
+  }, []);
+
   console.log(user);
   return (
     <div className="App">
