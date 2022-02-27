@@ -1,4 +1,4 @@
-import { Grid, Link, Stack, Typography } from '@mui/material';
+import { Button, Grid, Link, Stack, Typography } from '@mui/material';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
 import { useContext } from 'react';
@@ -6,10 +6,12 @@ import { useLocation } from 'react-router-dom';
 import { AppContext } from '../../../context/AppContext';
 import Searchbar from '../Searchbar/Searchbar';
 import { Link as LinkR } from 'react-router-dom';
+import { AuthContext } from '../../../context/authContext/AuthContext';
 import './style.css';
 
 const DesktopView = () => {
   const { navbar, darkMode, setDarkMode } = useContext(AppContext);
+  const { user, setUser } = useContext(AuthContext);
   const selectClass = () => {
     const location = useLocation();
     if (location.pathname !== '/' || navbar === true) {
@@ -37,7 +39,7 @@ const DesktopView = () => {
         </Typography>
       </Grid>
       <Grid item md={4} display="flex" justifyContent="center">
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={2} style={{ alignItems: 'center' }}>
           <Link href="#" underline="none">
             <Typography variant="body1" className={selectedClass}>
               Sneakers
@@ -45,19 +47,32 @@ const DesktopView = () => {
           </Link>
           <Link href="#" underline="none">
             <Typography variant="body1" className={selectedClass}>
-              FC Apparel
-            </Typography>
-          </Link>
-          <Link href="#" underline="none">
-            <Typography variant="body1" className={selectedClass}>
               Store
             </Typography>
           </Link>
-          <LinkR to="/login" style={{ textDecoration: 'none' }}>
-            <Typography variant="body1" className={selectedClass}>
-              Login
-            </Typography>
-          </LinkR>
+          {user?.email ? (
+            <LinkR to="/dashboard" style={{ textDecoration: 'none' }}>
+              <Typography variant="body1" className={selectedClass}>
+                Dashboard
+              </Typography>
+            </LinkR>
+          ) : (
+            <LinkR to="/login" style={{ textDecoration: 'none' }}>
+              <Typography variant="body1" className={selectedClass}>
+                Login
+              </Typography>
+            </LinkR>
+          )}
+          {user && (
+            <Button
+              variant="outlined"
+              color="primary"
+              size="small"
+              onClick={() => setUser(null)}
+            >
+              Logout
+            </Button>
+          )}
           <Typography
             variant="body1"
             style={{ cursor: 'pointer' }}
