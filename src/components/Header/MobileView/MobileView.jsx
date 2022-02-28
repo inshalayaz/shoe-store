@@ -1,12 +1,15 @@
-import { Grid, Typography, Link } from '@mui/material';
+import { Grid, Typography, Link, Button } from '@mui/material';
 import Searchbar from '../Searchbar/Searchbar';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import './style.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { Link as LinkR } from 'react-router-dom';
+import { AuthContext } from '../../../context/authContext/AuthContext';
+
 const MobileView = () => {
   const [openMenu, setOpenMenu] = useState(false);
-
+  const { user, setUser } = useContext(AuthContext);
   const handleClick = () => {
     console.log('click');
     setOpenMenu(!openMenu);
@@ -46,6 +49,32 @@ const MobileView = () => {
                   </Link>
                 </Grid>
               ))}
+              <Grid item xs={12}>
+                {user?.email ? (
+                  <LinkR to="/dashboard" style={{ textDecoration: 'none' }}>
+                    <Typography variant="body1">Dashboard</Typography>
+                  </LinkR>
+                ) : (
+                  <LinkR to="/login" style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" color="secondary" size="medium">
+                      Login
+                    </Button>
+                  </LinkR>
+                )}
+                {user && (
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    size="small"
+                    onClick={() => {
+                      setUser(null);
+                      localStorage.clear();
+                    }}
+                  >
+                    Logout
+                  </Button>
+                )}
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
