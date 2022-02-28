@@ -10,6 +10,8 @@ import Container from '@mui/material/Container';
 import { Link as LinkR } from 'react-router-dom';
 import { register } from '../../context/authContext/apiCalls';
 import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { useRef, useState } from 'react';
 
 function Copyright(props) {
   return (
@@ -31,18 +33,27 @@ function Copyright(props) {
 
 export default function Register() {
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const [captcha, setCaptcha] = useState();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    register({ email: data.get('email'), password: data.get('password') });
+    register({
+      email: data.get('email'),
+      password: data.get('password'),
+      captcha: captcha,
+    });
     const message = JSON.parse(localStorage.getItem('message'));
 
-    if (message.message) {
+    if (message?.message === 'Registered Successfully') {
       navigate('/login');
     }
   };
 
+  const handleChange = (value) => {
+    setCaptcha(value);
+    console.log(captcha);
+  };
   return (
     <Container
       component="main"
@@ -95,6 +106,12 @@ export default function Register() {
           >
             Sign Up
           </Button>
+          <Grid item xs={12}>
+            <ReCAPTCHA
+              sitekey="6Ldpa6YeAAAAAMRMIh5CFxDmSueqFhF8sJ1vC9uB"
+              onChange={handleChange}
+            />
+          </Grid>
           <Grid container justifyContent="flex-end">
             <Grid item>
               <LinkR to="/login">
