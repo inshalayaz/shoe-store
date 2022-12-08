@@ -40,7 +40,7 @@ const DesktopView = () => {
       </Grid>
       <Grid item md={4} display="flex" justifyContent="center">
         <Stack direction="row" spacing={2} style={{ alignItems: 'center' }}>
-          <Link href="#" underline="none">
+          <Link href="/sneakers" underline="none">
             <Typography variant="body1" className={selectedClass}>
               Sneakers
             </Typography>
@@ -50,24 +50,10 @@ const DesktopView = () => {
               Store
             </Typography>
           </Link>
-          {user?.email ? (
-            <LinkR to="/dashboard" style={{ textDecoration: 'none' }}>
-              <Typography variant="body1" className={selectedClass}>
-                Dashboard
-              </Typography>
-            </LinkR>
-          ) : (
-            <LinkR to="/login" style={{ textDecoration: 'none' }}>
-              <Typography variant="body1" className={selectedClass}>
-                Login
-              </Typography>
-            </LinkR>
-          )}
-          {user && (
+          {user ? (
             <Button
-              variant="outlined"
+              variant="contained"
               color="primary"
-              size="small"
               onClick={() => {
                 setUser(null);
                 localStorage.clear();
@@ -75,6 +61,10 @@ const DesktopView = () => {
             >
               Logout
             </Button>
+          ): (
+            <LinkR to="/login" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" color="primary" > Login </Button>
+            </LinkR>
           )}
           <Typography
             variant="body1"

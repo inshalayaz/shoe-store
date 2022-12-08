@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const login = async (data, setUser) => {
   try {
-    const res = await axios.post('http://localhost:3001/api/auth/login', data, {
+    const res = await axios.post('http://localhost:3001/login', data, {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
@@ -11,9 +11,11 @@ export const login = async (data, setUser) => {
       },
     });
     setUser(res.data);
-    localStorage.setItem('email', JSON.stringify(res.data));
+    return true
+    // localStorage.setItem('email', JSON.stringify(res.data));
   } catch (error) {
-    localStorage.setItem('error', JSON.stringify(error));
+    return false
+    // localStorage.setItem('error', JSON.stringify(error));
   }
 };
 
@@ -21,7 +23,7 @@ export const register = async (data) => {
   console.log(data);
   try {
     const res = await axios.post(
-      'http://localhost:3001/api/auth/register',
+      'http://localhost:3001/register',
       data,
       {
         headers: {
@@ -35,6 +37,7 @@ export const register = async (data) => {
     localStorage.setItem('message', JSON.stringify(res.data));
     alert('Registered Successfully');
   } catch (error) {
-    console.log(error);
+    localStorage.setItem('message', JSON.stringify(error.response.data.message));
+    alert(error.response.data.message)
   }
 };

@@ -37,23 +37,23 @@ export default function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
     const data = new FormData(event.currentTarget);
     register({
       email: data.get('email'),
       password: data.get('password'),
-      captcha: captcha,
+      confirmPassword: data.get('confirmPassword')
+      // captcha: captcha,
     });
     const message = JSON.parse(localStorage.getItem('message'));
 
     if (message?.message === 'Registered Successfully') {
+      localStorage.clear()
       navigate('/login');
     }
   };
 
-  const handleChange = (value) => {
-    setCaptcha(value);
-    console.log(captcha);
-  };
+
   return (
     <Container
       component="main"
@@ -97,6 +97,17 @@ export default function Register() {
                 autoComplete="new-password"
               />
             </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                name="confirmPassword"
+                label="Confirm Password"
+                type="password"
+                id="confirmPassword"
+                autoComplete="new-password"
+              />
+            </Grid>
           </Grid>
           <Button
             type="submit"
@@ -106,12 +117,12 @@ export default function Register() {
           >
             Sign Up
           </Button>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <ReCAPTCHA
               sitekey="6Ldpa6YeAAAAAMRMIh5CFxDmSueqFhF8sJ1vC9uB"
               onChange={handleChange}
             />
-          </Grid>
+          </Grid> */}
           <Grid container justifyContent="flex-end">
             <Grid item>
               <LinkR to="/login">

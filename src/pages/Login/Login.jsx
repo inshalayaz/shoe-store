@@ -37,16 +37,20 @@ function Copyright(props) {
 export default function Login() {
   const { user, setUser } = useContext(AuthContext);
   let navigate = useNavigate();
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    login(
+
+    if( !data.get('email') && !data.get('password') ) alert("Please Enter Your Email and Password")
+    else if( !data.get('email')) alert("Please Enter Your Email!")
+    else if( !data.get('password')) alert("Please Enter Your Password!")
+    let res = await login(
       { email: data.get('email'), password: data.get('password') },
       setUser
     );
-    if (user.email) {
-      console.log(user.email);
-      navigate('/dashboard');
+    console.log(res)
+    if (res) {
+      navigate('/');
     }
   };
 

@@ -1,27 +1,47 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import authRoute from './routes/auth.mjs';
-import sequelize from './config/config.mjs';
+import express from "express"
+import cors from "cors"
+import mongoose from "mongoose"
+import session from "express-session"
 
-const app = express();
+const app = express()
+
+
+
+app.use(session({
+    name: "mySession",
+    secret: "456644",
+    maxAge: 10000
+}));
+
+
+// Routes
+import registerRoute from "./routes/register.mjs"
+import loginRoute from "./routes/login.mjs"
 
 app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'DELETE'],
-    credentials: true,
-  })
+    cors({
+        origin: "*",
+        methods: ["GET", "POST", "DELETE", "PATCH"],
+      credentials: true,
+    })
 );
-app.use(bodyParser.urlencoded({ extended: false }));
 
-// parse application/json
-app.use(bodyParser.json());
+app.use(express.json())
+app.use(express.urlencoded());
 
-app.use('/api/auth', authRoute);
 
-sequelize.sync().then((req) => {
-  app.listen(3001, () => {
-    console.log('Server Running on port ' + 3001);
-  });
-});
+app.use(registerRoute)
+app.use(loginRoute)
+
+
+
+mongoose.connect('mongodb://localhost:27017/shoe-store').then(() => {
+    
+    app.listen(3001, () => {
+        console.log("server running")
+    })
+    
+}).catch((err) => {
+    console.log(err.message)
+})
+

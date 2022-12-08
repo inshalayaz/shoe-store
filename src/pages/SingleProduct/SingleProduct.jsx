@@ -4,10 +4,12 @@ import afterpay from '../../images/afterpay.svg';
 
 import data from '../../components/Products/data';
 import { Link, useParams } from 'react-router-dom';
+import { AppContext } from '../../context/AppContext';
+import { useContext } from 'react';
 
 const SingleProduct = () => {
   const sizes = [4, 6, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 13, 14];
-
+  const { darkMode } =  useContext(AppContext)
   const { personId } = useParams();
 
   const productId = personId;
@@ -18,7 +20,6 @@ const SingleProduct = () => {
 
   product = product[0];
 
-  console.log(product);
 
   return (
     <Grid container spacing={2} className="single_product">
@@ -42,16 +43,22 @@ const SingleProduct = () => {
             <Typography variant="subtitle2">SELECT US MENU</Typography>
           </Grid>
           <Grid item xs={12} md={8}>
-            {sizes.map((i, index) => (
-              <Button
-                variant="outlined"
-                size="large"
-                key={index}
-                className="menu_btn"
-              >
-                {i}
-              </Button>
-            ))}
+         
+            {
+              sizes.map((i, index) => (
+                <Button
+                  variant="outlined"
+                  size="large"
+                  key={index}
+                  className="menu_btn"
+                  color={darkMode ? 'secondary' : 'primary'}
+                >
+                  {i}
+                </Button>
+              ))
+
+            }
+
           </Grid>
 
           <Grid item xs={6}>
