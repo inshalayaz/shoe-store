@@ -45,7 +45,7 @@ const DesktopView = () => {
               Sneakers
             </Typography>
           </Link>
-          <Link href="#" underline="none">
+          <Link href="/store" underline="none">
             <Typography variant="body1" className={selectedClass}>
               Store
             </Typography>

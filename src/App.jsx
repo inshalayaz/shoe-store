@@ -15,7 +15,8 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import { AuthContext } from './context/authContext/AuthContext';
 import Dashboard from './pages/Dashboard/Dashboard';
-import Sneakers from './pages/Sneakers/Sneakers';
+import Sneakers from './pages/Sneakers/Sneakers'
+import Store from './pages/Store/Store';
 const App = () => {
   const { darkMode } = useContext(AppContext);
   const theme = createTheme({
@@ -69,7 +70,8 @@ const App = () => {
 
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/register" element={<Register />} />
-                <Route exact path="/sneakers" element={<Sneakers />} />
+                <Route exact path="/sneakers" element={<Sneakers/>} />
+                <Route exact path="/store" element={<Store/>} />
               
               </Routes>
               <Footer />

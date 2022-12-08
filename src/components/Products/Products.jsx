@@ -5,11 +5,11 @@ import './products.css';
 import data from './data';
 import { Link } from 'react-router-dom';
 
-const Products = () => {
+const Products = ({isStore = false}) => {
   return (
     <Grid container spacing={2} className="products">
       <Grid item xs={12} className="products_content">
-        <Typography variant="h5">NEW RELEASES</Typography>
+        <Typography variant="h5">  {!isStore ? "NEW RELEASES" : "Our Shop"}</Typography>
         <div className="cards">
           <Grid container spacing={2}>
             {data.map(({ img, title, brand, slug }) => (
@@ -24,11 +24,17 @@ const Products = () => {
             ))}
           </Grid>
         </div>
-        <Grid item xs={12} style={{ display: 'flex' }} justifyContent="center">
-          <Button color="primary" size="large" variant="contained">
-            SHOP NEW RELEASES
-          </Button>
-        </Grid>
+        {
+          !isStore && (
+
+          <Grid item xs={12} style={{ display: 'flex' }} justifyContent="center">
+            <Button color="primary" size="large" variant="contained">
+              SHOP NEW RELEASES
+            </Button>
+          </Grid>
+
+          )
+        }
       </Grid>
     </Grid>
   );
